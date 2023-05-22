@@ -1,23 +1,34 @@
 <template>
     <div class="container">
+        <nav class="navbar">
+      <div class="navbar-brand">
+        
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a v-if="this.$store.state.isAuthenticated" class="navbar-item" @click="logout">Logout</a>
+          <div v-else><a class="navbar-item" @click="login">Iniciar sesión</a>
+          <a  class="navbar-item" @click="register">Registrarse</a>
+        </div>
+        </div>
+      </div>
+    </nav>
       <h1>Pokemon</h1>
-      
+      <PokemonSearch
+      :apiUrl="apiUrl" 
+      @setPokemonUrl="setPokemonUrl" />
       <PokemonList 
         :imageUrl="imageUrl" 
         :apiUrl="apiUrl"
         @setPokemonUrl="setPokemonUrl" />
-      <PokemonDetail 
-        v-if="showDetail"
-        :pokemonUrl="pokemonUrl"
-        :imageUrl="imageUrl"
-        @closeDetail="closeDetail" />
+      
     </div>
   </template>
   
   <script>
     import PokemonSearch from './PokemonSearch.vue';
     import PokemonList from './PokemonList.vue';
-    import PokemonDetail from './PokemonDetail.vue';
+    
   
     export default {
       data: () => {
@@ -25,23 +36,21 @@
           imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
           apiUrl: 'https://pokeapi.co/api/v2/pokemon',
           pokemonUrl: '',
-          showDetail: false
+          
         }
       },
       components: {
         PokemonSearch,
         PokemonList,
-        PokemonDetail
+        
       },
       methods: {
         setPokemonUrl(url) {
-          this.pokemonUrl = url;
-          this.showDetail = true;
+            const pokemonId = url.split('/').filter(part => !!part).pop();
+            this.$router.push('/pokemon/' + pokemonId);
+            
         },
-        closeDetail() {
-          this.pokemonUrl = '';
-          this.showDetail = false;
-        }
+        
       }
     }
   </script>
@@ -65,4 +74,21 @@
     }
   
     h1 { color: #efefef; }
+    .navbar {
+      background-color: #f5f5f5;
+      padding: 10px;
+    }
+    .navbar-brand h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+    }
+    .navbar-menu {
+    display: flex;
+    justify-content: flex-end;
+    }
+    .navbar-item {
+    margin-left: 10px;
+    cursor: pointer;
+    }
   </style>

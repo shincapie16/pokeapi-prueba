@@ -13,6 +13,7 @@
 
             <!-- Main container for all inputs -->
             <div class="mainContainer">
+                <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
                 <!-- Username -->
                 <label for="username">Usuario</label>
                 <input type="text" v-model="username" placeholder="Usuario" required>
@@ -45,12 +46,15 @@
     data() {
       return {
         username: '',
-        password: ''
+        password: '',
+        errorMessage: null
       };
     },
     methods: {
       
       login() {
+        this.errorMessage = null;
+
         axios.post('api/v1/token/login', { username: this.username, password: this.password })
           .then(response => {
             const token = response.data.auth_token
@@ -64,12 +68,22 @@
           })
           .catch(error => {
             console.error(error);
+            this.errorMessage = 'Las credenciales no coinciden.';
+            localStorage.setItem('errorMessage', this.errorMessage);
+            window.location.reload();
             // Manejar el error, mostrar mensajes de error, etc.
           });
       },
       goToRegister(){
         this.$router.push('register/');
       }
+    },
+    created() {
+        this.errorMessage = localStorage.getItem('errorMessage'); // Recuperar el mensaje de localStorage
+        localStorage.removeItem('errorMessage');
+        if (this.$store.state.isAuthenticated) {
+            this.$router.push('/');
+        }
     }
   };
   </script>
@@ -78,5 +92,8 @@
   * {
     margin: 0;
     }
-    
+    .error-message {
+        color: red;
+        margin-top: 10px;
+    }
   </style>

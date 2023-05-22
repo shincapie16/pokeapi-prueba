@@ -27,8 +27,8 @@ const routes = [
           
       },
       {
-        path: '/detail',
-        name: 'detail',
+        path: '/pokemon/:id',
+        name: 'PokemonDetail',
         component: PokeDetail
           
       },
