@@ -57,7 +57,7 @@
       padding: 10px;
       width: calc(100% - 20px);
       min-height: calc(100vh - 20px);
-      background: radial-gradient(#156F99, #0A2E50);
+      background: linear-gradient(to right, #155799, #8b0202);
   
       font-family: 'Acme', arial;
       font-size: 1rem;

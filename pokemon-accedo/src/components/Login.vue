@@ -1,15 +1,3 @@
-<!-- 
-<template>
-    <div class="login">
-      <h1>Iniciar Sesión</h1>
-      <form @submit.prevent="login">
-        <input type="text" v-model="username" placeholder="Correo electrónico" required>
-        <input type="password" v-model="password" placeholder="Contraseña" required>
-        <button type="submit">Iniciar Sesión</button>
-        <p class="register" @click="goToRegister()">Not a member?  <a href="#">Register here!</a></p>
-      </form>
-    </div>
-  </template> -->
 <template>
 
     <div class="login">
