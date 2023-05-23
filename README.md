@@ -51,7 +51,7 @@ git clone https://github.com/shincapie16/pokeapi-prueba.git
 - Dirigirse a la carpeta raíz
 - Dirigirse a la carpeta en donde se encuentra el Frontend del proyecto
   ```
-  cd pokemon-accedo
+  cd pokemon_front
   ```
  - Instalar todas las depedencias requeridas (en este caso de utilizó axios para realizar solicitudes HTTP, vue y vuex para el manejo de estados del usuario y vue-router para manejar el enrutamiento del proyecto)
  ```
