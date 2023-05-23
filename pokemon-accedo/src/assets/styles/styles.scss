@@ -98,6 +98,22 @@ button:hover {
     color: #CC0000;
     cursor: pointer;
   }
+.gotoMenu-btn{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #8b0202;
+    color: #efefef;
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+          
+    }
+.gotoMenu-btn:hover{
+    opacity: 0.6;
+}
+        
 
   /* Media queries for the responsiveness of the page */
   @media screen and (max-width: 600px) {

@@ -28,7 +28,7 @@
 
               <!-- Submit button -->
               <button type="submit">Registrarse</button>
-
+              <button class="gotoMenu-btn" @click="goToMenu">Regresar</button>
               
 
           </div>
@@ -53,14 +53,44 @@
         axios.post('api/v1/users/', { username: this.username, password: this.password })
           .then(response => {
             console.log(response.data.message);
-            this.$router.push('/login')
+            this.login();
             // Manejar la respuesta, redireccionar, mostrar mensajes, etc.
           })
           .catch(error => {
             console.error(error.response.data.error);
             // Manejar el error, mostrar mensajes de error, etc.
           });
-      }
+      },
+      login() {
+        
+
+        axios.post('api/v1/token/login', { username: this.username, password: this.password })
+          .then(response => {
+            const token = response.data.auth_token
+            this.$store.commit('setToken', token)
+            axios.defaults.headers.common['Authorization']= 'Token' + token
+            localStorage.setItem("token", token)
+            
+            this.$router.push('/')
+            window.location.reload();
+            
+            // Manejar la respuesta, redireccionar, mostrar mensajes, etc.
+          })
+          .catch(error => {
+            console.error(error);
+            
+            window.location.reload();
+            // Manejar el error, mostrar mensajes de error, etc.
+          });
+      },
+      goToMenu(){
+            this.$router.push('/');
+        },
+    },
+    beforeCreate() {
+        if (this.$store.state.isAuthenticated) {
+            this.$router.push('/');
+        }
     }
   };
 </script>

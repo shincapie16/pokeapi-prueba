@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Login from '@/components/Login.vue';
 import Registro from '@/components/Registro.vue'
 import Pokemon from '@/components/Pokemon.vue'
-import Logout from '@/components/Logout.vue'
 import PokeDetail from '@/components/PokeDetail.vue'
 const routes = [
     {
@@ -20,12 +19,7 @@ const routes = [
         name: 'Home',
         component: Pokemon
       },
-      {
-        path: '/logout',
-        name: 'logout',
-        component: Logout
-          
-      },
+      
       {
         path: '/pokemon/:id',
         name: 'PokemonDetail',

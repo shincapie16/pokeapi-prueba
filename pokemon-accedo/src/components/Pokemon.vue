@@ -1,22 +1,10 @@
 <template>
+    <Navbar></Navbar>
     <div class="container">
-        <nav class="navbar">
-      <div class="navbar-brand">
-        
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a v-if="this.$store.state.isAuthenticated" class="navbar-item" @click="logout">Logout</a>
-          <div v-else><a class="navbar-item" @click="login">Iniciar sesión</a>
-          <a  class="navbar-item" @click="register">Registrarse</a>
-        </div>
-        </div>
-      </div>
-    </nav>
-      <h1>Pokemon</h1>
-      <PokemonSearch
-      :apiUrl="apiUrl" 
-      @setPokemonUrl="setPokemonUrl" />
+    
+      <h1>¡Tú Pokedex!</h1>
+      <p>Hecho por: Santiago Hincapié Arango</p>
+      <p> Prueba Accedo</p>
       <PokemonList 
         :imageUrl="imageUrl" 
         :apiUrl="apiUrl"
@@ -26,8 +14,8 @@
   </template>
   
   <script>
-    import PokemonSearch from './PokemonSearch.vue';
     import PokemonList from './PokemonList.vue';
+    import Navbar from './Navbar.vue'
     
   
     export default {
@@ -40,9 +28,8 @@
         }
       },
       components: {
-        PokemonSearch,
         PokemonList,
-        
+        Navbar,
       },
       methods: {
         setPokemonUrl(url) {
@@ -55,10 +42,11 @@
     }
   </script>
   
-  <style lang="scss" scoped>
-    @import url('https://fonts.googleapis.com/css?family=Acme');
+<style lang="scss" scoped>
+
+@import url('https://fonts.googleapis.com/css?family=Acme');
   
-    .container {
+.container {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -71,24 +59,13 @@
       font-family: 'Acme', arial;
       font-size: 1rem;
       font-weight: normal;
-    }
+}
   
-    h1 { color: #efefef; }
-    .navbar {
-      background-color: #f5f5f5;
-      padding: 10px;
-    }
-    .navbar-brand h1 {
-        font-size: 24px;
-        font-weight: bold;
-        margin: 0;
-    }
-    .navbar-menu {
-    display: flex;
-    justify-content: flex-end;
-    }
-    .navbar-item {
-    margin-left: 10px;
-    cursor: pointer;
-    }
+h1 { color: #efefef; }
+p  { 
+    color: #efefef; 
+    margin-top: -20px;
+    
+}
+
   </style>

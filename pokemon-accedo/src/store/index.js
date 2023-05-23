@@ -26,6 +26,7 @@ export default createStore({
       state.token = ''
       state.isAuthenticated = false
       window.localStorage.clear();
+      window.location.reload();
     }
   },
   actions: {

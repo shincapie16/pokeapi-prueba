@@ -9,6 +9,9 @@ import axios from 'axios'
 
 export default {
   name: 'App',
+  mounted() {
+                  document.title = "PokeApi Accedo";
+                      },
   
   beforeCreate(){
     this.$store.commit('initializeStore')

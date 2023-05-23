@@ -7,38 +7,19 @@
           <img :src="imageUrl + pokemon.id + '.png'" alt="">
         </div>
         <div v-if="pokemon" class="data">
-          <h2>{{ pokemon.name }}</h2>
-          <div class="property">
-            <div class="left">Experiencia</div>
-            <div class="right">{{ pokemon.base_experience }} XP</div>
-          </div>
-          <div class="property">
-            <div class="left">Altura</div>
-            <div class="right">{{ pokemon.height / 10 }} m</div>
-          </div>
-          <div class="property">
-            <div class="left">Peso</div>
-            <div class="right">{{ pokemon.weight / 10 }} kg</div>
-          </div>
-          <h3>Tipos</h3>
-          <div class="types">
-            <div class="type" 
-              v-for="(value, index) in pokemon.types"
-              :key="'value'+index">
-              {{ value.type.name }}
-            </div>
-          </div>
-          <h3>Habilidades</h3>
-          <div class="abilities">
-            <div class="ability" 
-              v-for="(value, index) in pokemon.abilities"
-              :key="'value'+index">
-              {{ value.ability.name }}
-            </div>
+            
+            <h2>{{ pokemon.name }}</h2>
+            <h3>Habilidades</h3>
+            <div class="abilities">
+                <div class="ability" 
+                    v-for="(value, index) in pokemon.abilities"
+                    :key="'value'+index">
+                    {{ value.ability.name }}
+                </div>
           </div>
         </div>
-        <h2 v-else>The pokemon was not found</h2>
-        <button class="close" @click="goToMenu">Regresar</button> 
+        <h2 v-else>Pokemon no encontrado</h2>
+        <button class="close" @click="goToMenu">Regresa a tu Pokedex</button> 
       </div>
 
     </div>
@@ -86,6 +67,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css?family=Acme');
     .detail {
       display: flex;
       justify-content: center;
@@ -105,7 +87,7 @@ export default {
         flex-direction: column;
         position: relative;
         width: 100%;
-        max-width: 510px;
+        max-width: 400px;
         padding: 50px 0 0;
         background-color: #fff;
         border-radius: 5px;
@@ -120,7 +102,7 @@ export default {
           top: -60px;
           width: 120px;
           height: 120px;
-          background-color: #333;
+          background-color:#063869;
           border-radius: 50%;
           overflow: hidden;
           box-shadow: 0 15px 30px rgba(0,0,0,.2),
@@ -128,7 +110,10 @@ export default {
         }
   
         h2 {
-          text-transform: capitalize;
+            
+            font-family: 'Acme', arial;
+            text-transform: capitalize;
+            font-size: 3rem;
         }
   
         .data {
@@ -139,34 +124,29 @@ export default {
           width: 100%;
           margin-bottom: 40px;
   
-          .property {
-            width: 90%;
-            max-width: 400px;
-            border-bottom: 1px solid #ccc;
-            margin-bottom: 10px;
-  
-            .left { float: left; }
-            .right { float: right; }
-          }
+          
   
           h3 {
-            width: 90%;
+            font-family: 'Acme', arial;
             max-width: 400px;
             border-bottom: 1px solid #ccc;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
           }
   
-          .types, .abilities {
+           .abilities {
             display: flex;
             justify-content: flex-start;
-            flex-wrap: wrap;
-            width: 90%;
+            flex-direction: column;          
             max-width: 400px;
   
-            .type, .ability {
+            .ability {
               margin: 0 10px 10px 0;
               padding: 5px 10px;
               border-radius: 20px;
               color: #fff;
+              font-family: 'Acme', arial;
               font-size: 1rem;
               letter-spacing: 2px;
               text-transform: capitalize;
@@ -174,7 +154,7 @@ export default {
               word-break: keep-all;
             }
   
-            .type { background-color: #0A2E50; }
+            
             .ability { background-color: #8b0202; }
           }
         }
@@ -195,9 +175,6 @@ export default {
         }
       }
   
-      i {
-        font-size: 2rem;
-        color: #efefef;
-      }
+      
     }
   </style>

@@ -33,7 +33,7 @@
 
                 <!-- Sign up link -->
                 <p class="register" >¿No tienes una cuenta?  <a @click="goToRegister()">Registrate</a></p>
-
+                <button class="gotoMenu-btn" @click="goToMenu">Regresar</button>
             </div>
 
         </form>
@@ -62,7 +62,7 @@
             axios.defaults.headers.common['Authorization']= 'Token' + token
             localStorage.setItem("token", token)
             this.$router.push('/')
-
+            window.location.reload()
             console.log(response.data.message);
             // Manejar la respuesta, redireccionar, mostrar mensajes, etc.
           })
@@ -76,9 +76,13 @@
       },
       goToRegister(){
         this.$router.push('register/');
-      }
+      },
+      goToMenu(){
+            this.$router.push('/');
+        },
     },
-    created() {
+    
+    beforeCreate() {
         this.errorMessage = localStorage.getItem('errorMessage'); // Recuperar el mensaje de localStorage
         localStorage.removeItem('errorMessage');
         if (this.$store.state.isAuthenticated) {
@@ -93,7 +97,7 @@
     margin: 0;
     }
     .error-message {
-        color: red;
+        color: #ff0000;
         margin-top: 10px;
     }
   </style>
