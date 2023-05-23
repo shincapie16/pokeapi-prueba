@@ -51,33 +51,33 @@
       };
     },
     methods: {
-      
-      login() {
-        this.errorMessage = null;
 
-        axios.post('api/v1/token/login', { username: this.username, password: this.password })
-          .then(response => {
-            const token = response.data.auth_token
-            this.$store.commit('setToken', token)
-            axios.defaults.headers.common['Authorization']= 'Token' + token
-            localStorage.setItem("token", token)
-            this.$router.push('/')
-            window.location.reload()
-            console.log(response.data.message);
-            // Manejar la respuesta, redireccionar, mostrar mensajes, etc.
-          })
-          .catch(error => {
-            console.error(error);
-            this.errorMessage = 'Las credenciales no coinciden.';
-            localStorage.setItem('errorMessage', this.errorMessage);
-            window.location.reload();
-            // Manejar el error, mostrar mensajes de error, etc.
-          });
+        login() {
+            this.errorMessage = null;
+
+            axios.post('api/v1/token/login', { username: this.username, password: this.password })
+            .then(response => {
+                const token = response.data.auth_token
+                this.$store.commit('setToken', token)
+                axios.defaults.headers.common['Authorization']= 'Token' + token
+                localStorage.setItem("token", token)
+                this.$router.push('/')
+                window.location.reload()
+                console.log(response.data.message);
+                // Manejar la respuesta, redireccionar, mostrar mensajes, etc.
+            })
+            .catch(error => {
+                console.error(error);
+                this.errorMessage = 'Las credenciales no coinciden.';
+                localStorage.setItem('errorMessage', this.errorMessage);
+                window.location.reload();
+                // Manejar el error, mostrar mensajes de error, etc.
+            });
       },
-      goToRegister(){
-        this.$router.push('register/');
+        goToRegister(){
+        this.$router.push('/register');
       },
-      goToMenu(){
+        goToMenu(){
             this.$router.push('/');
         },
     },

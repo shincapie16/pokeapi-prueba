@@ -29,7 +29,7 @@ export default {
     data() {
         return {
             pokemon: {},
-            imageUrl: '',
+            imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
         };
     },
     methods: {
@@ -43,7 +43,7 @@ export default {
             .then((data) => {
               this.pokemon = data;
               this.show = true;
-              this.imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+              
               
             })
             .catch((error) => {
