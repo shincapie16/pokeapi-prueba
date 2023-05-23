@@ -105,10 +105,13 @@ export default {
           background-color:#063869;
           border-radius: 50%;
           overflow: hidden;
+          transition: transform 492ms ease-in;
           box-shadow: 0 15px 30px rgba(0,0,0,.2),
                       0 10px 10px rgba(0,0,0,.2);
         }
-  
+        .image:hover{
+            transform: translate(0px, 10px);
+        }
         h2 {
             
             font-family: 'Acme', arial;
@@ -122,7 +125,7 @@ export default {
           align-items: center;
           flex-direction: column;
           width: 100%;
-          margin-bottom: 40px;
+          margin-bottom: 10px;
   
           
   
@@ -131,15 +134,14 @@ export default {
             max-width: 400px;
             border-bottom: 1px solid #ccc;
             display: flex;
-            margin-left: auto;
-            margin-right: auto;
+            
           }
   
            .abilities {
             display: flex;
             justify-content: flex-start;
             flex-direction: column;          
-            max-width: 400px;
+            max-width: 300px;
   
             .ability {
               margin: 0 10px 10px 0;
@@ -152,10 +154,11 @@ export default {
               text-transform: capitalize;
               word-wrap: none;
               word-break: keep-all;
+              background-color: #8b0202;
             }
   
             
-            .ability { background-color: #8b0202; }
+            
           }
         }
   
