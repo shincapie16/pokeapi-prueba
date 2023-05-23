@@ -114,7 +114,13 @@ button:hover {
     opacity: 0.6;
 }
         
-
+.pswd-condition{
+    font-size: small;
+}
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+}
   /* Media queries for the responsiveness of the page */
   @media screen and (max-width: 600px) {
     form{

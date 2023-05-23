@@ -33,7 +33,7 @@
 
                 <!-- Sign up link -->
                 <p class="register" >¿No tienes una cuenta?  <a @click="goToRegister()">Registrate</a></p>
-                <button class="gotoMenu-btn" @click="goToMenu">Regresar</button>
+                <button class="gotoMenu-btn" @click="goToMenu">Regresa a tú pokedex</button>
             </div>
 
         </form>
@@ -82,7 +82,7 @@
         },
     },
     
-    beforeCreate() {
+    created() {
         this.errorMessage = localStorage.getItem('errorMessage'); // Recuperar el mensaje de localStorage
         localStorage.removeItem('errorMessage');
         if (this.$store.state.isAuthenticated) {
@@ -96,8 +96,5 @@
   * {
     margin: 0;
     }
-    .error-message {
-        color: #ff0000;
-        margin-top: 10px;
-    }
+    
   </style>

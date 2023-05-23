@@ -20,7 +20,7 @@ export default {
     login(){
         this.$router.push('login/');
       },
-      register(){
+    register(){
         this.$router.push('register/');
       },
     logout() {

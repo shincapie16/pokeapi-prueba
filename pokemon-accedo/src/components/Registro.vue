@@ -10,7 +10,7 @@
               <h1>Registro</h1>
           </div>
 
-          
+          <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
           <div class="mainContainer">
               <!-- Username -->
               <label for="email">Correo Electrónico</label>
@@ -21,9 +21,12 @@
 
               <label for="password">Contraseña</label>
               <input type="password" v-model="password" placeholder="Contraseña" required>
-   
+              <p class="pswd-condition">*Tu contraseña no puede ser demasiado similar a tu otra información personal.</p>
+              <p class="pswd-condition">*Tu contraseña debe contener al menos 8 caracteres.</p>
+              <p class="pswd-condition">*Tu contraseña no puede ser una contraseña de uso común.</p>
+              <p class="pswd-condition">*Tu contraseña no puede ser completamente numérica.</p>
               <button type="submit">Registrarse</button>
-              <button class="gotoMenu-btn" @click="goToMenu">Regresar</button>
+              <button class="gotoMenu-btn" @click="goToMenu">Regresa a tú pokedex</button>
               
 
           </div>
@@ -41,11 +44,13 @@
         email: '',
         username: '',
         password: '',
+        errorMessage: null,
       };
     },
     methods: {
       
       register() {
+        this.errorMessage = null;
         axios.post('api/v1/users/', { email: this.email, username: this.username, password: this.password })
           .then(response => {
             console.log(response.data.message);
@@ -54,7 +59,9 @@
           })
           .catch(error => {
             console.error(error.response.data.error);
-            
+            this.errorMessage = 'Por favor cumplir con las condiciones de registro';
+            localStorage.setItem('errorMessage', this.errorMessage);
+            window.location.reload();
           });
       },
       login() {
@@ -83,7 +90,9 @@
             this.$router.push('/');
         },
     },
-    beforeCreate() {
+    created() {
+      this.errorMessage = localStorage.getItem('errorMessage'); // Recuperar el mensaje de localStorage
+      localStorage.removeItem('errorMessage');
         if (this.$store.state.isAuthenticated) {
             this.$router.push('/');
         }
@@ -92,4 +101,5 @@
 </script>
 <style lang="scss" scoped>
   @import '../assets/styles/styles.scss';
+
 </style>
