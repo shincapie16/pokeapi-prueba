@@ -43,8 +43,6 @@ export default {
             .then((data) => {
               this.pokemon = data;
               this.show = true;
-              
-              
             })
             .catch((error) => {
               console.log(error);

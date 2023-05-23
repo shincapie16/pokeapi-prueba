@@ -24,14 +24,13 @@
                 <label for="password">Contraseña</label>
                 <input type="password" v-model="password" placeholder="Contraseña" required>
 
-                <!-- sub container for the checkbox and forgot password link -->
                 
 
 
                 <!-- Submit button -->
                 <button type="submit">Iniciar Sesión</button>
 
-                <!-- Sign up link -->
+                
                 <p class="register" >¿No tienes una cuenta?  <a @click="goToRegister()">Registrate</a></p>
                 <button class="gotoMenu-btn" @click="goToMenu">Regresa a tú pokedex</button>
             </div>
@@ -71,7 +70,7 @@
                 this.errorMessage = 'Las credenciales no coinciden.';
                 localStorage.setItem('errorMessage', this.errorMessage);
                 window.location.reload();
-                // Manejar el error, mostrar mensajes de error, etc.
+               
             });
       },
         goToRegister(){
